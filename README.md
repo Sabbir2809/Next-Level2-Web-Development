@@ -4,7 +4,7 @@ Boost my Web development Career by Learning and Mastering TypeScript, Express, M
 
 ## Mission-1: Be a Typescript Technocrat
 
-### Module-2: Explore Basic Types in TypeScript - (November 1st)
+### Module-1: Explore Basic Types in TypeScript - (November 1st)
 
 In this module, I will learn the essentials of getting started with TypeScript. This includes installing TypeScript and Node Version Manager, writing your first program, understanding basic data types, working with objects and optional properties, and mastering functions. Additionally, you will explore advanced topics such as utilizing the spread and rest operators, destructuring, union, alias, and intersection for efficient code manipulation.
 
@@ -17,3 +17,5 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Union(|) and Intersection(&) types
 1. Ternary(condition ? true : false), Optional Chaining(?.) and Nullish Coalescing Operator(??)
 1. never, unknown and nullable type
+
+### Module-2: Explore Advance Types in TypeScript - (November 3rd)
