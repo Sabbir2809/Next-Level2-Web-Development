@@ -19,3 +19,14 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. never, unknown and nullable type
 
 ### Module-2: Explore Advance Types in TypeScript - (November 3rd)
+
+1. Type Assertion / Type Narrowing
+1. Interface, type vs interface
+1. Introduction to generics
+1. Function with generic
+1. Constraints in TS
+1. Constraint using keyof
+1. Asynchronous TS
+1. Conditional Types
+1. Mapped Types([key in keyof T], map())
+1. Utility Types(Pick, Omit, Required, Partial, Readonly, Record)
