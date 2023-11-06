@@ -30,3 +30,16 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Conditional Types
 1. Mapped Types([key in keyof T], map())
 1. Utility Types(Pick, Omit, Required, Partial, Readonly, Record)
+
+### Module-3: Object-Oriented Programming with TypeScript - November 5th
+
+1.
+1. Class and Object
+1. Inheritance
+1. Type Guard using typeof, in and instance of
+1. Access modifiers
+1. Getter and Setter
+1. Statics
+1. Polymorphism
+1. Abstraction
+1. Encapsulation
