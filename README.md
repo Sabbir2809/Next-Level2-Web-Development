@@ -33,7 +33,6 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 
 ### Module-3: Object-Oriented Programming with TypeScript - November 5th
 
-1.
 1. Class and Object
 1. Inheritance
 1. Type Guard using typeof, in and instance of
@@ -43,3 +42,5 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Polymorphism
 1. Abstraction
 1. Encapsulation
+
+### Module-4: (Assignment-1) Basic Problem Solving using TypeScript for Technocrats - November 7th
