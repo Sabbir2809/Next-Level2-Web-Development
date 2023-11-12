@@ -44,3 +44,7 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Encapsulation
 
 ### Module-4: (Assignment-1) Basic Problem Solving using TypeScript for Technocrats - November 7th
+
+## Mission-2: Be a Mongoose Master
+
+### Module-5: In-Depth Exploration of MongoDB Queries
