@@ -45,6 +45,27 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 
 ### Module-4: (Assignment-1) Basic Problem Solving using TypeScript for Technocrats - November 7th
 
+---
+
 ## Mission-2: Be a Mongoose Master
 
 ### Module-5: In-Depth Exploration of MongoDB Queries
+
+1. insert, insertOne, find, findOne, field filtering, project
+1. Operators: $eq, $ne, $gt, $lt, $gte, $lte, $in, $nin, $or, $and, $nt, $exists, $type
+1. Array Query [array, object, array of object ]: $all , $elemMatch, $size
+1. Update Query: ($set, $addToSet,$each, $push, $unset, $pop,$pull, $pullAll )
+1. delete documents, drop collection
+
+### Module-6: Mastering MongoDB Aggregation and Indexing
+
+1. $match , $project aggregation stage
+1. $addFields , $out , $merge aggregation stage
+1. $group , $sum , $push aggregation stage
+1. explore more about ($group) and ($project)
+1. Explore $group with $unwind aggregation stage
+1. $bucket, $sort, and $limit aggregation stage
+1. $facet, multiple pipeline aggregation stage
+1. $lookup stage, embedding vs referencing
+1. What is indexing, COLLSCAN vs IXSCAN
+1. Explore compound index and text index
