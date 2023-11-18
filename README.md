@@ -69,3 +69,18 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. $lookup stage, embedding vs referencing
 1. What is indexing, COLLSCAN vs IXSCAN
 1. Explore compound index and text index
+
+### Module-7: Mastering the Foundation of Express.js
+
+1. What is node.js and a hight level overview of node.js
+1. What is module, commonjs vs esm
+1. File System Module, Synchronous vs Asynchronous
+1. Event driven architecture, create your own events
+1. Stream and Buffer, create your own server
+1. Installing express, typescript
+1. what is parsers, request and response object
+1. Middleware in express.js
+1. Routing in express.js
+1. Express Error handler part-1
+
+### Module-8: Mastering the Foundation of Express.js
