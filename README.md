@@ -83,4 +83,4 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Routing in express.js
 1. Express Error handler part-1
 
-### Module-8: Mastering the Foundation of Express.js
+### Module-8: Mastering the Core Concepts of Mongoose
