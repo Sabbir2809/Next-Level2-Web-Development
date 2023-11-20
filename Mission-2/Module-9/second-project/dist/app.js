@@ -12,8 +12,4 @@ app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 // application routes
 app.use("/api/v1/students", student_route_1.StudentRoutes);
-app.get("/", (req, res) => {
-    const print = "Hello World!";
-    res.send(print);
-});
 exports.default = app;

@@ -84,3 +84,5 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Express Error handler part-1
 
 ### Module-8: Mastering the Core Concepts of Mongoose
+
+### Module-9: Advance CRUD with Express, Mongoose and TypeScript

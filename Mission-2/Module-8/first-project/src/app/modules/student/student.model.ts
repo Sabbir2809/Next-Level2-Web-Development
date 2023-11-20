@@ -27,18 +27,29 @@ const studentSchema = new Schema<Student>(
   {
     id: { type: String },
     name: studentNameSchema,
-    gender: ["Male", "Female"],
+    gender: {
+      type: String,
+      enum: ["Male", "Female"],
+      required: true,
+    },
     dateOfBirth: { type: String },
     email: { type: String, required: true },
     contactNo: { type: String, required: true },
     emergencyContactNo: { type: String, required: true },
-    bloodGroup: ["A+", "A-", "AB+", "AB-", "B+", "B-", "O+", "O-"],
+    bloodGroup: {
+      type: String,
+      enum: ["A+", "A-", "AB+", "AB-", "B+", "B-", "O+", "O-"],
+    },
     presentAddress: { type: String, required: true },
     permanentAddress: { type: String, required: true },
     guardian: guardianSchema,
     localGuardian: localGuardianSchema,
     profileImage: { type: String },
-    isActive: ["active", "blocked"],
+    isActive: {
+      type: String,
+      enum: ["active", "blocked"],
+      default: "active",
+    },
   },
   { versionKey: false }
 );
