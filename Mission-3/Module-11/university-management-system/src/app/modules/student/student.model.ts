@@ -1,8 +1,6 @@
-import bcrypt from "bcrypt";
 import { Schema, model } from "mongoose";
 import validator from "validator";
-import config from "../../config";
-import { Guardian, Student, StudentName, localGuardian } from "./student.interface";
+import { Guardian, IStudent, StudentName, localGuardian } from "./student.interface";
 
 const studentNameSchema = new Schema<StudentName>({
   firstName: {
@@ -46,14 +44,19 @@ const localGuardianSchema = new Schema<localGuardian>({
 });
 
 // 1. Create an interface representing a document in MongoDB.
-const studentSchema = new Schema<Student>(
+const studentSchema = new Schema<IStudent>(
   {
     id: { type: String, required: [true, "Student ID is required"], unique: true },
+    userId: {
+      type: Schema.Types.ObjectId,
+      required: [true, "userId is required"],
+      unique: true,
+      ref: "User",
+    },
     name: {
       type: studentNameSchema,
       required: [true, "Student name is required"],
     },
-    password: { type: String, required: true },
     gender: {
       type: String,
       enum: {
@@ -92,29 +95,10 @@ const studentSchema = new Schema<Student>(
       required: [true, "Local guardian details are required"],
     },
     profileImage: { type: String },
-    isActive: {
-      type: String,
-      enum: ["active", "blocked"],
-      default: "active",
-    },
     isDeleted: { type: Boolean, default: false },
   },
-  { versionKey: false, toJSON: { virtuals: true } }
+  { versionKey: false, timestamps: true, toJSON: { virtuals: true } }
 );
-
-// middleware hook: pre
-studentSchema.pre("save", async function (next) {
-  // hashing password and dave into DB
-  const user = this;
-  user.password = await bcrypt.hash(user.password, Number(config.bcrypt_salt_rounds));
-  next();
-});
-
-// middleware hook: post
-studentSchema.post("save", function (doc, next) {
-  doc.password = "";
-  next();
-});
 
 // query middleware
 studentSchema.pre("find", function (next) {
@@ -127,4 +111,4 @@ studentSchema.pre("aggregate", function (next) {
   next();
 });
 
-export const StudentModel = model("Student", studentSchema);
+export const Student = model<IStudent>("Student", studentSchema);

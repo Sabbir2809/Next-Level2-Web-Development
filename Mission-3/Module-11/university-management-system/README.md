@@ -71,7 +71,6 @@
     guardian: ObjectId
     localGuardian: ObjectId
     profileImage: String
-    status: String
     academicDepartment: ObjectId
     isDeleted: Boolean
     createdAt: Date
@@ -93,7 +92,6 @@
    presentAddress: String
    permanentAddress: String
    profileImage: String
-   status: String
    academicFaculty: ObjectId
    academicDepartment: ObjectId
    isDeleted: Boolean
@@ -117,7 +115,6 @@
    presentAddress: String
    permanentAddress: String
    profileImage: String
-   status: String
    managementDepartment: ObjectId
    isDeleted: Boolean
    createdAt: Date
@@ -132,6 +129,7 @@
     password: String
     needsPasswordChange: Boolean
     role: String
+    status: String
     createdAt: Date
     updatedAt: Date
 ```
