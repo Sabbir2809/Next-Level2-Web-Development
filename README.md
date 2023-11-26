@@ -4,7 +4,7 @@ Boost my Web development Career by Learning and Mastering TypeScript, Express, M
 
 ## Mission-1: Be a Typescript Technocrat
 
-### Module-1: Explore Basic Types in TypeScript - (November 1st)
+### Module-1: Explore Basic Types in TypeScript
 
 In this module, I will learn the essentials of getting started with TypeScript. This includes installing TypeScript and Node Version Manager, writing your first program, understanding basic data types, working with objects and optional properties, and mastering functions. Additionally, you will explore advanced topics such as utilizing the spread and rest operators, destructuring, union, alias, and intersection for efficient code manipulation.
 
@@ -18,7 +18,7 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Ternary(condition ? true : false), Optional Chaining(?.) and Nullish Coalescing Operator(??)
 1. never, unknown and nullable type
 
-### Module-2: Explore Advance Types in TypeScript - (November 3rd)
+### Module-2: Explore Advance Types in TypeScript
 
 1. Type Assertion / Type Narrowing
 1. Interface, type vs interface
@@ -31,7 +31,7 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Mapped Types([key in keyof T], map())
 1. Utility Types(Pick, Omit, Required, Partial, Readonly, Record)
 
-### Module-3: Object-Oriented Programming with TypeScript - November 5th
+### Module-3: Object-Oriented Programming with TypeScript
 
 1. Class and Object
 1. Inheritance
@@ -43,7 +43,7 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Abstraction
 1. Encapsulation
 
-### Module-4: (Assignment-1) Basic Problem Solving using TypeScript for Technocrats - November 7th
+### Module-4: (Assignment-1) Basic Problem Solving using TypeScript for Technocrats
 
 ---
 
@@ -85,4 +85,24 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 
 ### Module-8: Mastering the Core Concepts of Mongoose
 
+1. Installing express, mongoose, typescript, dotenv, cors package and Project Setup
+1. Software design pattern, MVC vs Modular
+
 ### Module-9: Advance CRUD with Express, Mongoose and TypeScript
+
+1. Mongoose Custom Validation with validator, joi and zod package
+1. Implement a custom instance and static method
+1. Mongoose middleware and implement query middlewares
+1. Implement data delete in another way
+1. Mongoose Virtuals implementation
+
+### Module-10: (Assignment-2)Express, Mongoose and TypeScript CRUD Mastery
+
+---
+
+## Mission-3: Be a NoSQL Backend Brainiac
+
+### Module-11: Requirement Analysis, Project Setup and Refactoring
+
+1. What is SDLC, How will we start our project
+1. Requirement analysis of University Management
