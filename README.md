@@ -105,4 +105,10 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 ### Module-11: Requirement Analysis, Project Setup and Refactoring
 
 1. What is SDLC, How will we start our project
-1. Requirement analysis of University Management
+1. Requirement analysis of University Management System
+1. Modeling Data, Schema Design and ER Diagram
+1. Create API Endpoints
+1. Create user interface, model and validation
+1. Refactor user validation, student route, controller and service
+1. Fix Bugs and setup basic global error handler
+1. create not found route and sendResponse utility and create index route

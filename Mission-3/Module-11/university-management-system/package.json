@@ -11,8 +11,8 @@
   "keywords": [
     "node",
     "express",
-    "mongoose",
-    "mongodb"
+    "mongodb",
+    "mongoose"
   ],
   "author": "",
   "license": "ISC",
