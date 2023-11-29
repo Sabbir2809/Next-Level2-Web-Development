@@ -56,8 +56,8 @@ const studentSchema = new Schema<IStudent>(
     dateOfBirth: { type: String },
     email: {
       type: String,
-      required: [true, "Email is required"],
       unique: true,
+      required: [true, "Email is required"],
     },
     contactNo: { type: String, required: [true, "Contact number is required"] },
     emergencyContactNo: { type: String, required: [true, "Emergency contact number is required"] },
@@ -79,6 +79,10 @@ const studentSchema = new Schema<IStudent>(
       required: [true, "Local guardian details are required"],
     },
     profileImage: { type: String },
+    admissionSemester: {
+      type: Schema.Types.ObjectId,
+      ref: "AcademicSemester",
+    },
     isDeleted: { type: Boolean, default: false },
   },
   { versionKey: false, timestamps: true, toJSON: { virtuals: true } }
