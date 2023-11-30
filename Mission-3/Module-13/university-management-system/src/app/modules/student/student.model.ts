@@ -79,9 +79,13 @@ const studentSchema = new Schema<IStudent>(
       required: [true, "Local guardian details are required"],
     },
     profileImage: { type: String },
-    admissionSemester: {
+    admissionSemesterId: {
       type: Schema.Types.ObjectId,
       ref: "AcademicSemester",
+    },
+    academicDepartmentId: {
+      type: Schema.Types.ObjectId,
+      ref: "AcademicDepartment",
     },
     isDeleted: { type: Boolean, default: false },
   },
@@ -89,13 +93,8 @@ const studentSchema = new Schema<IStudent>(
 );
 
 // query middleware
-studentSchema.pre("find", function (next) {
+studentSchema.pre("find", async function (next) {
   this.find({ isDeleted: { $ne: true } });
-  next();
-});
-
-studentSchema.pre("aggregate", function (next) {
-  this.pipeline().unshift({ $match: { isDeleted: { $ne: true } } });
   next();
 });
 
