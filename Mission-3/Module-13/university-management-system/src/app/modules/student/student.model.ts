@@ -98,4 +98,10 @@ studentSchema.pre("find", async function (next) {
   next();
 });
 
+// static method
+// studentSchema.statics.isUserExits = async function (id: string) {
+//   const existingUser = await Student.findOne({ id });
+//   return existingUser;
+// };
+
 export const Student = model<IStudent>("Student", studentSchema);

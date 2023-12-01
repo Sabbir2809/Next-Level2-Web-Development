@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import config from "../../config";
 import AppError from "../../errors/AppError";
 import AcademicSemester from "../academicSemester/academicSemester.model";
@@ -8,33 +9,44 @@ import User from "./user.model";
 import { generateStudentId } from "./user.utils";
 
 const createUserIntoDB = async (password: string, payload: IStudent) => {
-  // create a user object
   const userData: Partial<IUser> = {};
-  // if password is not given, use default password
   userData.password = password || (config.default_password as string);
   userData.role = "student";
 
-  // find academic semester info
   const admissionSemester = await AcademicSemester.findById(payload.admissionSemesterId);
-
   if (!admissionSemester) {
-    // Handle the case where admissionSemester is null
     throw new AppError(404, "Admission semester not found");
   }
-
-  // set manually generated it
   userData.id = await generateStudentId(admissionSemester);
 
-  // create a user
-  const newUser = await User.create(userData);
+  const session = await mongoose.startSession();
+  try {
+    // startTransaction()
+    session.startTransaction();
 
-  // create a student
-  if (Object.keys(newUser).length) {
-    payload.id = newUser.id; // embedding id
-    payload.userId = newUser._id; // reference _id
+    // create a user (transaction-1)
+    const newUser = await User.create([userData], { session });
+    if (!newUser.length) {
+      throw new AppError(400, "Failed to create user");
+    }
+    payload.id = newUser[0].id;
+    payload.userId = newUser[0]._id;
 
-    const newStudent = await Student.create(payload);
+    // create a student (transaction-2)
+    const newStudent = await Student.create([payload], { session });
+    if (!newStudent.length) {
+      throw new AppError(400, "Failed to create student");
+    }
+    // commitTransaction() and endSession()
+    await session.commitTransaction();
+    await session.endSession();
+
     return newStudent;
+  } catch (error) {
+    // abortTransaction() and endSession()
+    await session.abortTransaction();
+    await session.endSession();
+    throw new AppError(400, "Failed to create user");
   }
 };
 
