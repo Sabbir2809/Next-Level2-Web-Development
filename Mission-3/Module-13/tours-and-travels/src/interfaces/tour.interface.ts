@@ -1,0 +1,28 @@
+import { Model } from "mongoose";
+
+interface ITour {
+  name: string;
+  durationHours: number;
+  ratingAverage: number;
+  ratingQuantity: number;
+  price: number;
+  availableSeats: number;
+  imageCover: string;
+  images: string[];
+  createdAt: Date;
+  startDates: Date[];
+  startLocation: string;
+  locations: string[];
+  slug: string;
+}
+
+interface ITourMethods {
+  getNextNearestStartDateAndEndDate(): {
+    nearestStartDate: Date | null;
+    estimatedEndDate: Date | null;
+  };
+}
+
+type ITourModel = Model<ITour, {}, ITourMethods>;
+
+export { ITour, ITourMethods, ITourModel };
