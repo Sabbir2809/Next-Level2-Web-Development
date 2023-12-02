@@ -71,10 +71,26 @@ const deleteTour = async (req: Request, res: Response) => {
   }
 };
 
+const getNextSchedule = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const result = await tourServices.getNextSchedule(id);
+
+    res.status(200).json({
+      status: true,
+      message: "Next Schedule Fetch Successfully",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({ status: false, error: error.message });
+  }
+};
+
 export const tourControllers = {
   createTour,
   getAllTours,
   getSingleTour,
   updateTour,
   deleteTour,
+  getNextSchedule,
 };

@@ -7,5 +7,6 @@ router.get("/", tourControllers.getAllTours);
 router.get("/:id", tourControllers.getSingleTour);
 router.patch("/:id", tourControllers.updateTour);
 router.delete("/:id", tourControllers.deleteTour);
+router.get("/:id/next-schedule", tourControllers.getNextSchedule);
 
 export const tourRoutes = router;

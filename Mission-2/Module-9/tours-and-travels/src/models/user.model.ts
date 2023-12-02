@@ -38,7 +38,7 @@ const userSchema = new Schema<IUser>(
   { versionKey: false }
 );
 
-// middleware
+// Query middleware is supported for the following Query functions. Query middleware executes when you call exec() or then() on a Query object, or await on a Query object. In query middleware functions, this refers to the query.
 userSchema.pre(/^find/, function (this: Query<IUser, Document>, next) {
   this.find({ userStatus: { $eq: "active" } });
   next();

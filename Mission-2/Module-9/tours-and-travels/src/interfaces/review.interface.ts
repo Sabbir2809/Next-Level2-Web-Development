@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Model, Schema } from "mongoose";
 
 interface IReview {
   review: string;
@@ -8,4 +8,8 @@ interface IReview {
   user: Schema.Types.ObjectId;
 }
 
-export default IReview;
+interface IREviewModel extends Model<IReview> {
+  calculateAverageRating(tourId: Schema.Types.ObjectId): Promise<void>;
+}
+
+export { IREviewModel, IReview };

@@ -1,4 +1,4 @@
-import ITour from "../interfaces/tour.interface";
+import { ITour } from "../interfaces/tour.interface";
 import Tour from "../models/tour.model";
 
 // create
@@ -14,7 +14,7 @@ const getAllTours = async (): Promise<ITour[]> => {
 };
 
 const getSingleTour = async (id: string): Promise<ITour | null> => {
-  const result = await Tour.findById(id);
+  const result = await Tour.findById(id).populate("reviews");
   return result;
 };
 
@@ -30,10 +30,19 @@ const deleteTour = async (id: string): Promise<ITour | null> => {
   return result;
 };
 
+// getNextSchedule
+const getNextSchedule = async (id: string): Promise<any | null> => {
+  const tour = await Tour.findByIdAndDelete(id);
+  const nextSchedule = tour?.getNextNearestStartDateAndEndDate();
+
+  return { tour, nextSchedule };
+};
+
 export const tourServices = {
   createTour,
   getAllTours,
   getSingleTour,
   updateTour,
   deleteTour,
+  getNextSchedule,
 };
