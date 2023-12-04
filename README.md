@@ -102,7 +102,7 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 
 ## Mission-3: Be a NoSQL Backend Brainiac
 
-### Module-11: Requirement Analysis, Project Setup and Refactoring
+### Module-11: Requirement Analysis, Project Setup and Refactoring Part-1
 
 1. What is SDLC, How will we start our project
 1. Requirement analysis of University Management System
@@ -112,3 +112,18 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Refactor user validation, student route, controller and service
 1. Fix Bugs and setup basic global error handler
 1. create not found route and sendResponse utility and create index route
+
+### Module-12: University Management System Part-2
+
+### Module-13: University Management System Part-3
+
+1. global error handler
+1. catchAsync (Higher Order Function)
+1. Catch All Route
+
+### Module-14: University Management System Part-4
+
+1. Error handling
+1. Searching
+1. Filtering
+1. Pagination
