@@ -1,4 +1,4 @@
-import { TErrorSources, TGenericErrorResponse } from "../interface/error";
+import { TErrorSources, TGenericErrorResponse } from "../types/error";
 
 const handleDuplicateError = (error: any): TGenericErrorResponse => {
   const statusCode = 400;
