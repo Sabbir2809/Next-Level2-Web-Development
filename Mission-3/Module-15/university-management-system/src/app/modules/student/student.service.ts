@@ -82,8 +82,8 @@ const getStudentsFromDB = async (query: Record<string, unknown>) => {
   return result;
 };
 
-const getSingleStudentFromDB = async (studentId: string) => {
-  const result = await Student.findOne({ id: studentId })
+const getSingleStudentFromDB = async (id: string) => {
+  const result = await Student.findById(id)
     .populate("admissionSemesterId")
     .populate({
       path: "academicDepartmentId",
@@ -94,7 +94,7 @@ const getSingleStudentFromDB = async (studentId: string) => {
   return result;
 };
 
-const updateStudentFromDB = async (studentId: string, payload: Partial<IStudent>) => {
+const updateStudentFromDB = async (id: string, payload: Partial<IStudent>) => {
   const { name, guardian, localGuardian, ...remainingStudentData } = payload;
 
   const modifiedUpdatedData: Record<string, unknown> = { ...remainingStudentData };
@@ -117,15 +117,15 @@ const updateStudentFromDB = async (studentId: string, payload: Partial<IStudent>
     }
   }
 
-  const result = await Student.findOneAndUpdate({ id: studentId }, modifiedUpdatedData, {
+  const result = await Student.findByIdAndUpdate(id, modifiedUpdatedData, {
     new: true,
     runValidators: true,
   });
   return result;
 };
 
-const deleteSingleStudentFromDB = async (studentId: string) => {
-  const isExits = await Student.findOne({ id: studentId });
+const deleteSingleStudentFromDB = async (id: string) => {
+  const isExits = await Student.findById(id);
   if (!isExits) {
     throw new AppError(404, "Student id is does not exist");
   }
@@ -134,20 +134,15 @@ const deleteSingleStudentFromDB = async (studentId: string) => {
   try {
     session.startTransaction();
 
-    const deletedStudent = await Student.findOneAndUpdate(
-      { id: studentId },
-      { isDeleted: true },
-      { new: true, session }
-    );
+    const deletedStudent = await Student.findByIdAndUpdate(id, { isDeleted: true }, { new: true, session });
     if (!deletedStudent) {
       throw new AppError(400, "Failed to delete student");
     }
 
-    const deletedUser = await User.findOneAndUpdate(
-      { id: studentId },
-      { isDeleted: true },
-      { new: true, session }
-    );
+    // get user _id from deletedStudent
+    const userId = deletedStudent.userId;
+
+    const deletedUser = await User.findByIdAndUpdate(userId, { isDeleted: true }, { new: true, session });
     if (!deletedUser) {
       throw new AppError(400, "Failed to delete user");
     }
