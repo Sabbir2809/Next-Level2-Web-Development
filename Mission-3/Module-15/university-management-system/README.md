@@ -167,6 +167,27 @@
     updatedAt: Date
 ```
 
+8. **Course Model:**
+
+```mongodb
+    _id: ObjectId
+    title: String
+    prefix: String
+    code: Number
+    credits: Number
+    isDeleted: Boolean
+    preRequisiteCourses: Array
+    createdAt: Date
+    updatedAt: Date
+```
+
+9. **Course Faculty:**
+
+```mongodb
+    course: ObjectId
+    faculties: ObjectId
+```
+
 ## ER Diagram
 
 ![Image Description](./ERD.png)
@@ -174,11 +195,9 @@
 ## API Endpoints
 
 1. **User:**
-
    - `POST BASE-URL/users/create-student`
    - `POST BASE-URL/users/create-faculty`
    - `POST BASE-URL/users/create-admin`
-
 1. **Student:**
    - `GET BASE-URL/students`
    - `GET BASE-URL/students/:id`
@@ -197,6 +216,14 @@
    - `PATCH BASE-URL/admins/:id`
    - `DELETE BASE-URL/admins/:id`
    - `GET BASE-URL/admins/my-profile`
+1. **Course:**
+
+- `POST BASE-URL/courses/create-course`
+- `GET BASE-URL/courses`
+- `GET BASE-URL/courses/:id`
+- `PATCH BASE-URL/courses/:id`
+- `DELETE BASE-URL/courses/:id`
+
 1. **Authentication:**
    - `GET BASE-URL/auth/login`
    - `GET BASE-URL/auth/refresh-token`

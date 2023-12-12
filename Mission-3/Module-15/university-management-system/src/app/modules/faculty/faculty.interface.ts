@@ -6,7 +6,7 @@ export type TUserName = {
   lastName: string;
 };
 
-export type TGender = "male" | "female" | "other";
+export type TGender = "Male" | "Female";
 
 export type TBloodGroup = "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-" | "O+" | "O-";
 
@@ -24,7 +24,7 @@ export interface IFaculty {
   presentAddress: string;
   permanentAddress: string;
   profileImage?: string;
-  academicDepartment: Types.ObjectId;
+  academicDepartmentId: Types.ObjectId;
   isDeleted: boolean;
 }
 

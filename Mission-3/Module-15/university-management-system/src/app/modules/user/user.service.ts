@@ -65,7 +65,7 @@ const createFacultyIntoDB = async (password: string, payload: IFaculty) => {
   userData.role = "faculty";
 
   // find academic department info
-  const academicDepartment = await AcademicDepartment.findById(payload.academicDepartment);
+  const academicDepartment = await AcademicDepartment.findById(payload.academicDepartmentId);
 
   if (!academicDepartment) {
     throw new AppError(400, "Academic department not found");
