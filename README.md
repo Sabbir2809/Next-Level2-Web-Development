@@ -96,11 +96,11 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Implement data delete in another way
 1. Mongoose Virtuals implementation
 
-### Module-10: (Assignment-2)Express, Mongoose and TypeScript CRUD Mastery
+### Module-10: (Assignment-2) Express, Mongoose and TypeScript CRUD Mastery
 
 ---
 
-## Mission-3: Be a NoSQL Backend Brainiac
+## Mission-3: Be a NoSQL Backend Brainiac Part-1
 
 ### Module-11: Requirement Analysis, Project Setup and Refactoring Part-1
 
@@ -127,3 +127,11 @@ In this module, I will learn the essentials of getting started with TypeScript. 
 1. Searching
 1. Filtering
 1. Pagination
+
+### Module-15: University Management System Part-5
+
+### Module-16: (Assignment-3) Course Review
+
+---
+
+## Mission-3: Be a NoSQL Backend Brainiac Part-2
