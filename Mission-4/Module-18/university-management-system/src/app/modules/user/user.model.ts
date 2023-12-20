@@ -1,13 +1,14 @@
 import bcrypt from "bcrypt";
 import { Schema, model } from "mongoose";
 import config from "../../config";
-import { IUser } from "./user.interface";
+import { IUser, UserModel } from "./user.interface";
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema<IUser, UserModel>(
   {
     id: { type: String, unique: true, required: true },
-    password: { type: String, required: true },
+    password: { type: String, required: true, select: 0 },
     needsPasswordChange: { type: Boolean, default: true },
+    passwordChangeAt: { type: Date },
     role: {
       type: String,
       enum: ["student", "faculty", "admin"],
@@ -36,5 +37,14 @@ userSchema.post("save", async function (doc, next) {
   next();
 });
 
-const User = model<IUser>("User", userSchema);
+// statics
+userSchema.statics.isUserExistsByCustomId = async function (id: string) {
+  return await User.findOne({ id }).select("+password");
+};
+
+userSchema.statics.isPasswordMatched = async function (plainTextPassword, hashedPassword) {
+  return await bcrypt.compare(plainTextPassword, hashedPassword);
+};
+
+const User = model<IUser, UserModel>("User", userSchema);
 export default User;
