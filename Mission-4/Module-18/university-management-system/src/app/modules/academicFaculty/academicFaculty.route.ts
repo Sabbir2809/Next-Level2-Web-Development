@@ -1,4 +1,5 @@
 import express from "express";
+import auth from "../../middlewares/auth";
 import validateRequest from "../../middlewares/validateRequest";
 import { AcademicFacultyControllers } from "./academicFaculty.controller";
 import { AcademicFacultyValidations } from "./academicFaculty.validation";
@@ -9,7 +10,7 @@ router.post(
   validateRequest(AcademicFacultyValidations.createAcademicFacultyValidationSchema),
   AcademicFacultyControllers.createAcademicFaculty
 );
-router.get("/", AcademicFacultyControllers.getAllAcademicFaculties);
+router.get("/", auth(), AcademicFacultyControllers.getAllAcademicFaculties);
 router.get("/:facultyId", AcademicFacultyControllers.getSingleAcademicFaculty);
 router.patch(
   "/:facultyId",

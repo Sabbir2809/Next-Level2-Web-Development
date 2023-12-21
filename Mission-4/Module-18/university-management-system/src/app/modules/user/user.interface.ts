@@ -14,6 +14,7 @@ export interface IUser {
 export interface UserModel extends Model<IUser> {
   isUserExistsByCustomId(id: string): Promise<IUser>;
   isPasswordMatched(plainTextPassword: string, hashedPassword: string): Promise<boolean>;
+  isJWTIssuedBeforePasswordChanged(passwordChangedTimestamp: Date, jwtIssuedTimestamp: number): boolean;
 }
 
 export type TUserRole = keyof typeof USER_ROLE;

@@ -91,6 +91,8 @@ const facultySchema = new Schema<IFaculty, FacultyModel>(
     toJSON: {
       virtuals: true,
     },
+    versionKey: false,
+    timestamps: true,
   }
 );
 
