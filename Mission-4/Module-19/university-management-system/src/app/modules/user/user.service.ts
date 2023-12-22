@@ -4,6 +4,7 @@ import AppError from "../../errors/AppError";
 import AcademicDepartment from "../academicDepartment/academicDepartment.model";
 import AcademicSemester from "../academicSemester/academicSemester.model";
 import { Admin } from "../admin/admin.model";
+import { verifyToken } from "../auth/auth.utlis";
 import { IFaculty } from "../faculty/faculty.interface";
 import { Faculty } from "../faculty/faculty.model";
 import { IStudent } from "../student/student.interface";
@@ -16,6 +17,8 @@ const createStudentIntoDB = async (password: string, payload: IStudent) => {
   const userData: Partial<IUser> = {};
   userData.password = password || (config.default_password as string);
   userData.role = "student";
+  // set student email
+  userData.email = payload.email;
 
   const admissionSemester = await AcademicSemester.findById(payload.admissionSemesterId);
   if (!admissionSemester) {
@@ -63,6 +66,8 @@ const createFacultyIntoDB = async (password: string, payload: IFaculty) => {
 
   //set student role
   userData.role = "faculty";
+  // set faculty email
+  userData.email = payload.email;
 
   // find academic department info
   const academicDepartment = await AcademicDepartment.findById(payload.academicDepartmentId);
@@ -112,11 +117,13 @@ const createAdminIntoDB = async (password: string, payload: IFaculty) => {
   // create a user object
   const userData: Partial<IUser> = {};
 
-  //if password is not given , use deafult password
+  //if password is not given , use default password
   userData.password = password || (config.default_password as string);
 
   //set student role
   userData.role = "admin";
+  // set admin email
+  userData.email = payload.email;
 
   const session = await mongoose.startSession();
 
@@ -154,8 +161,34 @@ const createAdminIntoDB = async (password: string, payload: IFaculty) => {
   }
 };
 
+const getMe = async (token: string) => {
+  const decoded = verifyToken(token, config.jwt_access_secret as string);
+  const { userId, role } = decoded;
+
+  let result = null;
+  if (role === "student") {
+    result = await Student.findOne({ id: userId })
+      .populate("admissionSemesterId")
+      .populate({
+        path: "academicDepartmentId",
+        populate: {
+          path: "academicFacultyId",
+        },
+      });
+  }
+  if (role === "faculty") {
+    result = await Faculty.findOne({ id: userId }).populate("academicDepartmentId");
+  }
+  if (role === "admin") {
+    result = await Admin.findOne({ id: userId });
+  }
+
+  return result;
+};
+
 export const UserServices = {
   createStudentIntoDB,
   createFacultyIntoDB,
   createAdminIntoDB,
+  getMe,
 };

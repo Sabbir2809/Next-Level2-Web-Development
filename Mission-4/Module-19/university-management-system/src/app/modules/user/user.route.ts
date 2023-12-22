@@ -14,14 +14,14 @@ router.post(
   validateRequest(StudentValidations.createStudentValidationSchema),
   UserControllers.createStudent
 );
-
 router.post(
   "/create-faculty",
-  auth(USER_ROLE.admin),
+  // auth(USER_ROLE.admin),
   validateRequest(createFacultyValidationSchema),
   UserControllers.createFaculty
 );
-
 router.post("/create-admin", validateRequest(createAdminValidationSchema), UserControllers.createAdmin);
+
+router.get("/me", auth("student", "faculty", "admin"), UserControllers.getMe);
 
 export const UserRoutes = router;

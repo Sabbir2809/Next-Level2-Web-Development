@@ -6,6 +6,7 @@ import { IUser, UserModel } from "./user.interface";
 const userSchema = new Schema<IUser, UserModel>(
   {
     id: { type: String, unique: true, required: true },
+    email: { type: String, unique: true, required: true },
     password: { type: String, required: true, select: 0 },
     needsPasswordChange: { type: Boolean, default: true },
     passwordChangeAt: { type: Date },

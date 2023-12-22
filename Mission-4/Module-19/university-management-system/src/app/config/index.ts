@@ -13,4 +13,7 @@ export default {
   jwt_refresh_secret: process.env.JWT_REFRESH_SECRET,
   jwt_access_expires_in_secret: process.env.JWT_ACCESS_EXPIRES_IN,
   jwt_refresh_expires_in_secret: process.env.JWT_REFRESH_EXPIRES_IN,
+  smtp_user: process.env.SMTP_USER,
+  smtp_password: process.env.SMTP_PASSWORD,
+  rest_pass_ui_link: process.env.RESET_PASS_UI_LINK,
 };
