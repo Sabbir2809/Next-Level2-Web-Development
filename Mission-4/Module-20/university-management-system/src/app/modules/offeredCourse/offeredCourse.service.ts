@@ -10,10 +10,11 @@ import OfferedCourse from "./offeredCourse.model";
 import { hasTimeConflict } from "./offeredCourse.utils";
 
 const createOfferedCourseIntoDB = async (payload: IOfferedCourse) => {
-  const {
+  let {
     semesterRegistrationId,
     academicFacultyId,
     academicDepartmentId,
+    academicSemesterId,
     courseId,
     facultyId,
     section,
@@ -28,7 +29,10 @@ const createOfferedCourseIntoDB = async (payload: IOfferedCourse) => {
     throw new AppError(404, "Semester Registration Not Found!");
   }
 
-  const academicSemesterId = isSemesterRegistrationExists.academicSemesterId;
+  academicSemesterId = isSemesterRegistrationExists.academicSemesterId;
+  if (!academicSemesterId) {
+    throw new AppError(404, "academicSemesterId Not Found!");
+  }
 
   const isAcademicFacultyExists = await AcademicFaculty.findById(academicFacultyId);
   if (!isAcademicFacultyExists) {

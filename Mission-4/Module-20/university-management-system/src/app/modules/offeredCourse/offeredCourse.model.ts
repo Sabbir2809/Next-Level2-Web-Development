@@ -19,6 +19,11 @@ const semesterRegistrationSchema = new Schema<IOfferedCourse>(
       ref: "AcademicDepartment",
       required: true,
     },
+    academicSemesterId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "AcademicSemester",
+    },
     courseId: {
       type: Schema.Types.ObjectId,
       ref: "Course",

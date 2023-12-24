@@ -7,10 +7,11 @@ const router = express.Router();
 
 router.post(
   "/create-academic-faculty",
+  auth("admin"),
   validateRequest(AcademicFacultyValidations.createAcademicFacultyValidationSchema),
   AcademicFacultyControllers.createAcademicFaculty
 );
-router.get("/", auth(), AcademicFacultyControllers.getAllAcademicFaculties);
+router.get("/", auth("admin"), AcademicFacultyControllers.getAllAcademicFaculties);
 router.get("/:facultyId", AcademicFacultyControllers.getSingleAcademicFaculty);
 router.patch(
   "/:facultyId",

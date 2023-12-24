@@ -9,7 +9,7 @@ import { IFaculty } from "../faculty/faculty.interface";
 import { Faculty } from "../faculty/faculty.model";
 import { IStudent } from "../student/student.interface";
 import { Student } from "../student/student.model";
-import { IUser } from "./user.interface";
+import { CloudinaryImage, IUser } from "./user.interface";
 import User from "./user.model";
 import { generateAdminId, generateFacultyId, generateStudentId } from "./user.utils";
 
@@ -36,12 +36,6 @@ const createStudentIntoDB = async (file: any, password: string, payload: IStuden
     const path = file?.path;
 
     const profileImage = await sendImageToCloudinary(imageName, path);
-
-    interface CloudinaryImage {
-      secure_url: string;
-      // Add other properties if present in the actual object
-    }
-
     const cloudinaryImage = profileImage as CloudinaryImage;
 
     // create a user (transaction-1)
@@ -71,7 +65,7 @@ const createStudentIntoDB = async (file: any, password: string, payload: IStuden
   }
 };
 
-const createFacultyIntoDB = async (password: string, payload: IFaculty) => {
+const createFacultyIntoDB = async (file: any, password: string, payload: IFaculty) => {
   // create a user object
   const userData: Partial<IUser> = {};
 
@@ -97,6 +91,13 @@ const createFacultyIntoDB = async (password: string, payload: IFaculty) => {
     //set  generated id
     userData.id = await generateFacultyId();
 
+    //send image to cloudinary
+    const imageName = `${userData.id}${payload?.name?.firstName}`;
+    const path = file?.path;
+
+    const profileImage = await sendImageToCloudinary(imageName, path);
+    const cloudinaryImage = profileImage as CloudinaryImage;
+
     // create a user (transaction-1)
     const newUser = await User.create([userData], { session }); // array
 
@@ -107,6 +108,7 @@ const createFacultyIntoDB = async (password: string, payload: IFaculty) => {
     // set id , _id as user
     payload.id = newUser[0].id;
     payload.userId = newUser[0]._id; //reference _id
+    payload.profileImage = cloudinaryImage.secure_url;
 
     // create a faculty (transaction-2)
 
@@ -127,7 +129,7 @@ const createFacultyIntoDB = async (password: string, payload: IFaculty) => {
   }
 };
 
-const createAdminIntoDB = async (password: string, payload: IFaculty) => {
+const createAdminIntoDB = async (file: any, password: string, payload: IFaculty) => {
   // create a user object
   const userData: Partial<IUser> = {};
 
@@ -146,6 +148,13 @@ const createAdminIntoDB = async (password: string, payload: IFaculty) => {
     //set  generated id
     userData.id = await generateAdminId();
 
+    //send image to cloudinary
+    const imageName = `${userData.id}${payload?.name?.firstName}`;
+    const path = file?.path;
+
+    const profileImage = await sendImageToCloudinary(imageName, path);
+    const cloudinaryImage = profileImage as CloudinaryImage;
+
     // create a user (transaction-1)
     const newUser = await User.create([userData], { session });
 
@@ -156,6 +165,7 @@ const createAdminIntoDB = async (password: string, payload: IFaculty) => {
     // set id , _id as user
     payload.id = newUser[0].id;
     payload.userId = newUser[0]._id; //reference _id
+    payload.profileImage = cloudinaryImage.secure_url;
 
     // create a admin (transaction-2)
     const newAdmin = await Admin.create([payload], { session });

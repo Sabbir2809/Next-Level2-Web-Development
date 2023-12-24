@@ -4,7 +4,7 @@ export type TDays = "Sat" | "Sun" | "Mon" | "Tue" | "Wed" | "Thu" | "Fri";
 
 export interface IOfferedCourse {
   semesterRegistrationId: Types.ObjectId;
-  academicSemesterId?: Types.ObjectId;
+  academicSemesterId: Types.ObjectId;
   academicFacultyId: Types.ObjectId;
   academicDepartmentId: Types.ObjectId;
   courseId: Types.ObjectId;

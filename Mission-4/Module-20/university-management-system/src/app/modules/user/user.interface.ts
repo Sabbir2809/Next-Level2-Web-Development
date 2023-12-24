@@ -19,3 +19,7 @@ export interface UserModel extends Model<IUser> {
 }
 
 export type TUserRole = keyof typeof USER_ROLE;
+
+export type CloudinaryImage = {
+  secure_url: string;
+};
