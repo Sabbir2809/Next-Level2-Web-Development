@@ -21,7 +21,6 @@ class QueryBuilder<T> {
         ),
       });
     }
-
     return this;
   }
 
@@ -32,14 +31,12 @@ class QueryBuilder<T> {
     const excludeFields = ["searchTerm", "sort", "limit", "page", "limit", "fields"];
     excludeFields.forEach((el) => delete queryObj[el]);
     this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>);
-
     return this;
   }
 
   sort() {
     const sort = (this?.query.sort as string)?.split(",")?.join(" ") || "-createdAt";
     this.modelQuery = this.modelQuery.sort(sort as string);
-
     return this;
   }
 
@@ -49,15 +46,29 @@ class QueryBuilder<T> {
     let skip = (page - 1) * limit;
 
     this.modelQuery = this.modelQuery.skip(skip).limit(limit);
-
     return this;
   }
 
   fields() {
     const fields = (this?.query.fields as string)?.split(",")?.join(" ") || "";
     this.modelQuery = this.modelQuery.select(fields);
-
     return this;
+  }
+
+  async countTotal() {
+    const totalQueries = this.modelQuery.getFilter();
+    const total = await this.modelQuery.model.countDocuments(totalQueries);
+
+    let page = Number(this?.query?.page) || 1;
+    let limit = Number(this?.query?.limit) || 10;
+    const totalPage = Math.ceil(total / limit);
+
+    return {
+      page,
+      limit,
+      total,
+      totalPage,
+    };
   }
 }
 

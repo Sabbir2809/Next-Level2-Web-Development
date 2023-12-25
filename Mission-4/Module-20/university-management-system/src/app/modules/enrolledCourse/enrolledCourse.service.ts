@@ -163,7 +163,6 @@ const updateEnrolledCourseMarksIntoDB = async (facultyId: string, payload: Parti
     studentId,
     facultyId: faculty._id,
   });
-
   if (!isCourseBelongToFaculty) {
     throw new AppError(403, "You are forbidden! !");
   }
@@ -173,7 +172,7 @@ const updateEnrolledCourseMarksIntoDB = async (facultyId: string, payload: Parti
   };
 
   if (courseMarks?.finalTerm) {
-    const { classTest1, classTest2, midTerm, finalTerm } = isCourseBelongToFaculty.courseMarks;
+    const { classTest1, midTerm, classTest2, finalTerm } = isCourseBelongToFaculty.courseMarks;
 
     const totalMarks =
       Math.ceil(classTest1 * 0.1) +
@@ -182,6 +181,8 @@ const updateEnrolledCourseMarksIntoDB = async (facultyId: string, payload: Parti
       Math.ceil(finalTerm * 0.5);
 
     const result = calculateGradeAndPoints(totalMarks);
+
+    console.log(result);
 
     modifiedData.grade = result.grade;
     modifiedData.gradePoints = result.gradePoints;
