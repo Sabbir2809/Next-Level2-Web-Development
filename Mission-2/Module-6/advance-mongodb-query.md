@@ -10,7 +10,7 @@ use(databaseName);
 2. Create a new collection:
 
 ```mongodb
-const databaseName = "practice";
+const databaseName = "info";
 use(databaseName);
 ```
 
