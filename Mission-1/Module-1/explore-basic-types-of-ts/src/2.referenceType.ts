@@ -1,7 +1,7 @@
 /* Reference Data Type: Object */
 
 // Type Alias for object
-type USER = {
+type TUser = {
   firstName: string;
   middleName?: string;
   lastName: string;
@@ -10,7 +10,7 @@ type USER = {
   readonly institute: "DIU";
 };
 
-const user: USER = {
+const user: TUser = {
   firstName: "Sabbir",
   // middleName: "",
   lastName: "Hossain",

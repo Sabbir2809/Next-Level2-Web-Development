@@ -12,7 +12,7 @@ const result2 = isAuthenticated ? isAuthenticated : "Guest";
 console.log({ result1 }, { result2 });
 
 // optional chaining(?.)
-type New = {
+type TNew = {
   name: string;
   address: {
     city: string;
@@ -22,7 +22,7 @@ type New = {
   };
 };
 
-const newUser: New = {
+const newUser: TNew = {
   name: "Sabbir",
   address: {
     city: "Dhaka",
@@ -31,5 +31,5 @@ const newUser: New = {
   },
 };
 
-const userAddress = newUser?.address?.permanentAddress ?? "No Permanent Account";
+const userAddress = newUser?.address?.permanentAddress ?? "No Permanent Address";
 console.log({ userAddress });

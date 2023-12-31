@@ -30,10 +30,13 @@ console.log(student.getStudy(4));
 
 // extents Parent Class Person
 class Teacher extends Person {
-  department: string;
-  designation: string;
-
-  constructor(id: number, name: string, email: string, department: string, designation: string) {
+  constructor(
+    id: number,
+    name: string,
+    email: string,
+    public department: string,
+    public designation: string
+  ) {
     super(id, name, email);
     this.department = department;
     this.designation = designation;

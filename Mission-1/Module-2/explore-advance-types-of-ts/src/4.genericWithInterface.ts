@@ -1,6 +1,6 @@
 // Generic with Interface
 
-interface Developer<T, X = null> {
+interface IDeveloper<T, X = null> {
   name: string;
   age: number;
   role: string;
@@ -13,12 +13,12 @@ interface Developer<T, X = null> {
   bike?: X;
 }
 
-type huaweiInfo = {
+type THuaweiInfo = {
   brand: string;
   model: string;
   releaseYear: number;
 };
-const basicDeveloper: Developer<huaweiInfo> = {
+const basicDeveloper: IDeveloper<THuaweiInfo> = {
   name: "A",
   age: 1,
   role: "student",
@@ -34,7 +34,7 @@ const basicDeveloper: Developer<huaweiInfo> = {
   },
 };
 
-interface appleInfo {
+interface IAppleInfo {
   brand: string;
   model: string;
   display: string;
@@ -42,12 +42,12 @@ interface appleInfo {
   releaseYear: number;
 }
 
-interface bikeInfo {
+interface IBikeInfo {
   brand: string;
   model: string;
 }
 
-const intermediateDeveloper: Developer<appleInfo, bikeInfo> = {
+const intermediateDeveloper: IDeveloper<IAppleInfo, IBikeInfo> = {
   name: "B",
   age: 2,
   role: "admin",

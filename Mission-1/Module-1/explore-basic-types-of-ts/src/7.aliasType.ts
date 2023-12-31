@@ -1,7 +1,7 @@
 /* Type Alias */
 
 // object type alias
-type Student = {
+type TStudent = {
   fullName: string;
   gender: string;
   studentId: number;
@@ -11,7 +11,7 @@ type Student = {
   address?: string;
 };
 
-const student1: Student = {
+const student1: TStudent = {
   fullName: "Md Sabbir Hossain",
   gender: "Male",
   studentId: 2809,
@@ -21,7 +21,7 @@ const student1: Student = {
   address: "Singair",
 };
 
-const student2: Student = {
+const student2: TStudent = {
   fullName: "Ataur Rahman Rubel",
   gender: "Male",
   studentId: 2809,

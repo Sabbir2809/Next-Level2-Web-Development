@@ -17,5 +17,5 @@ const newUser = {
         presentAddress: "Kanainagar",
     },
 };
-const userAddress = (_b = (_a = newUser === null || newUser === void 0 ? void 0 : newUser.address) === null || _a === void 0 ? void 0 : _a.permanentAddress) !== null && _b !== void 0 ? _b : "No Permanent Account";
+const userAddress = (_b = (_a = newUser === null || newUser === void 0 ? void 0 : newUser.address) === null || _a === void 0 ? void 0 : _a.permanentAddress) !== null && _b !== void 0 ? _b : "No Permanent Address";
 console.log({ userAddress });

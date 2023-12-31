@@ -14,7 +14,7 @@
     // public addDeposit(amount: number) {
     //   this._balance = this._balance + amount;
     // }
-    set deposite(amount: number) {
+    set deposit(amount: number) {
       this._balance = this.balance + amount;
     }
     // public getBalance() {
@@ -26,6 +26,6 @@
   }
 
   const bikash = new BankAccount(1, "A", 20);
-  console.log((bikash.deposite = 80));
+  console.log((bikash.deposit = 80));
   console.log(bikash.balance);
 }

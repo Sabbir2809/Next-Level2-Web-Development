@@ -5,7 +5,7 @@ function add(num1: number, num2: number): number {
 console.log(add(2, 3));
 
 // arrow function
-const sub = (num1: number, num2: number): number => num1 + num2;
+const sub = (num1: number, num2: number): number => num1 - num2;
 console.log(sub(5, 2));
 
 // object -> function(method)

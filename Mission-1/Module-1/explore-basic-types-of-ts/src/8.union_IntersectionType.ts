@@ -11,7 +11,7 @@ const developer3: FullStackDeveloper1 = "JavaScript";
 const developer4: FullStackDeveloper2 = "Express";
 
 // object
-type DeveloperInfo = {
+type TDeveloperInfo = {
   name: string;
   email: string;
   gender: "Male" | "Female";
@@ -19,7 +19,7 @@ type DeveloperInfo = {
   position?: FullStackDeveloper2;
 };
 
-const newPosition: DeveloperInfo = {
+const newPosition: TDeveloperInfo = {
   name: "Sabbir Hossain",
   email: "sabbirto13@gmail.com",
   gender: "Male",
