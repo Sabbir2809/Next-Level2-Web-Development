@@ -133,3 +133,13 @@ Boost my Web development Career by Learning and Mastering TypeScript, Express, M
 ---
 
 ## Mission-4: Be a NoSQL Backend Brainiac Part-2
+
+### Module-17: University Management System Part-6
+
+### Module-18: University Management System Part-7
+
+### Module-19: University Management System Part-8
+
+### Module-20: University Management System Part-9
+
+### Module-21: (Assignment-4) Course Review with Auth
