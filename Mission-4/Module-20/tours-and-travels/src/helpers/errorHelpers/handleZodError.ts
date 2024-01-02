@@ -12,7 +12,7 @@ const handleZodError = (error: ZodError): TErrorResponse => {
   return {
     success: false,
     statusCode: 400,
-    message: "Zod Error!",
+    message: "Validation Error!",
     issues,
   };
 };

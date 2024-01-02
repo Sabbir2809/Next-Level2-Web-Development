@@ -2,13 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import { tourServices } from "../services/tour.service";
 import catchAsync from "../utils/catchAsync";
 import sendSuccessResponse from "../utils/sendResponse";
-import { createTourZodSchema } from "../validations/tour.validation";
 
 const createTour = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-  const tourData = req.body;
-  const validatedData = createTourZodSchema.parse(tourData);
-
-  const result = await tourServices.createTour(validatedData);
+  const result = await tourServices.createTour(req.body);
 
   sendSuccessResponse(res, {
     statusCode: 201,
@@ -19,7 +15,6 @@ const createTour = catchAsync(async (req: Request, res: Response, next: NextFunc
 
 const getAllTours = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
   const result = await tourServices.getAllTours();
-
   sendSuccessResponse(res, {
     statusCode: 200,
     message: "Tour Fetched Successfully",
