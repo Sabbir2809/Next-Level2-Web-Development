@@ -14,7 +14,7 @@ const createTour = catchAsync(async (req: Request, res: Response, next: NextFunc
 });
 
 const getAllTours = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-  const result = await tourServices.getAllTours();
+  const result = await tourServices.getAllTours(req.query);
   sendSuccessResponse(res, {
     statusCode: 200,
     message: "Tour Fetched Successfully",

@@ -1,3 +1,4 @@
+import { filter } from "../helpers/filterHelper";
 import { ITour } from "../interfaces/tour.interface";
 import Tour from "../models/tour.model";
 
@@ -8,8 +9,16 @@ const createTour = async (tourData: ITour): Promise<ITour> => {
 };
 
 // read
-const getAllTours = async (): Promise<ITour[]> => {
-  const result = await Tour.find();
+const getAllTours = async (query: any): Promise<ITour[]> => {
+  // copying query
+  const queryObj = { ...query };
+
+  const result = await filter(
+    Tour.find({
+      price: { $gt: query.price },
+    }),
+    queryObj
+  );
   return result;
 };
 
