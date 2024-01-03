@@ -1,6 +1,7 @@
-import { filter } from "../helpers/filterHelper";
+import { getQuery } from "../helpers/getQuery";
 import { ITour } from "../interfaces/tour.interface";
 import Tour from "../models/tour.model";
+import { TQueryObj } from "../types/TQueryObj";
 
 // create
 const createTour = async (tourData: ITour): Promise<ITour> => {
@@ -9,16 +10,8 @@ const createTour = async (tourData: ITour): Promise<ITour> => {
 };
 
 // read
-const getAllTours = async (query: any): Promise<ITour[]> => {
-  // copying query
-  const queryObj = { ...query };
-
-  const result = await filter(
-    Tour.find({
-      price: { $gt: query.price },
-    }),
-    queryObj
-  );
+const getAllTours = async (query: TQueryObj): Promise<ITour[]> => {
+  const result = await getQuery(Tour.find(), query);
   return result;
 };
 
