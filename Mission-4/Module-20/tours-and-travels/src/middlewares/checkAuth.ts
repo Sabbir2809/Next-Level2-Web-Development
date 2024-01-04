@@ -1,24 +1,28 @@
 import { NextFunction, Request, Response } from "express";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import { JwtPayload } from "jsonwebtoken";
 import config from "../config";
 import { USER_ROLE } from "../constants/users.constant";
 import AppError from "../helpers/errorHelpers/AppError";
+import { JWTHelpers } from "../helpers/jwtHelpers";
+import User from "../models/user.model";
 import catchAsync from "../utils/catchAsync";
-import User from "./user.model";
 
 const checkAuth = (...roles: Array<keyof typeof USER_ROLE>) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    // token
     const token = req.headers.authorization;
-
     if (!token) {
       throw new AppError(403, "Invalid Token");
     }
 
-    const decodedToken = jwt.verify(token, config.jwt_access_secret as string);
+    const decodedToken = JWTHelpers.verifyToken(token, config.jwt_access_secret as string);
+
     const { id } = decodedToken as JwtPayload;
 
     // find valid user
     const user = await User.findOne({ _id: id });
+
+    (req as any).user = decodedToken as JwtPayload;
 
     // authentication
     if (!user) {
