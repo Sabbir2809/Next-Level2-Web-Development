@@ -1,4 +1,5 @@
 import { Query, Schema, model } from "mongoose";
+import { ACCOUNT_STATUS, USER_ROLE } from "../constants/users.constant";
 import IUser from "../interfaces/user.interface";
 
 const userSchema = new Schema<IUser>(
@@ -17,25 +18,34 @@ const userSchema = new Schema<IUser>(
       required: [true, "Please tell us your email"],
       lowercase: true,
     },
+    password: {
+      type: String,
+      required: [true, "Please provide a password"],
+      select: 0,
+    },
+    passwordChangedAt: {
+      type: Date,
+      default: null,
+    },
     photo: String,
     role: {
       type: String,
       enum: {
-        values: ["user", "admin"],
+        values: Object.values(USER_ROLE),
         message: "Role is either: user or admin. Your role is {VALUE}",
-        default: "user",
+        default: USER_ROLE.user,
       },
     },
     userStatus: {
       type: String,
       enum: {
-        values: ["active", "inactive"],
+        values: Object.values(ACCOUNT_STATUS),
         message: "User Status is either: active or inactive. Your status is {VALUE}",
-        default: "active",
+        default: ACCOUNT_STATUS.active,
       },
     },
   },
-  { versionKey: false }
+  { versionKey: false, timestamps: true }
 );
 
 // Query middleware is supported for the following Query functions. Query middleware executes when you call exec() or then() on a Query object, or await on a Query object. In query middleware functions, this refers to the query.

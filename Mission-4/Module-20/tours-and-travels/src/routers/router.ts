@@ -1,4 +1,5 @@
 import express from "express";
+import { authRoutes } from "./auth.route";
 import { bookingRoutes } from "./booking.route";
 import { reviewRoutes } from "./review.route";
 import { tourRoutes } from "./tour.route";
@@ -7,6 +8,10 @@ import { userRoutes } from "./user.route";
 const globalRouter = express.Router();
 
 const routes = [
+  {
+    path: "/auth",
+    route: authRoutes,
+  },
   {
     path: "/users",
     route: userRoutes,
