@@ -147,7 +147,3 @@ Boost my Web development Career by Learning and Mastering TypeScript, Express, M
 ---
 
 ## Mission-5: Skill Assessment and Quality Assurance
-
----
-
-## Mission-6: Be a Redux Reaper
